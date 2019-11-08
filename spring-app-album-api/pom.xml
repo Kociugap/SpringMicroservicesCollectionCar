@@ -11,7 +11,7 @@
     <groupId>pl.pakoc</groupId>
     <artifactId>SpringAppAlbumApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-app-album-apis</name>
+    <name>spring-app-album-api</name>
     <description>API Albums for User</description>
 
     <properties>
