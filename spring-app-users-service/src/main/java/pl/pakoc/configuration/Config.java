@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import feign.Logger;
+import pl.pakoc.exception.FeignErrorDecoder;
 
 @Configuration
 public class Config {

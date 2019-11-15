@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;

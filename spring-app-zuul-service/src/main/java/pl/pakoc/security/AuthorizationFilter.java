@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.security;
 
 import java.io.IOException;
 import java.util.ArrayList;

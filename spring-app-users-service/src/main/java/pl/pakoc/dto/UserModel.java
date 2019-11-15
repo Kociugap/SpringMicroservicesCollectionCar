@@ -1,7 +1,9 @@
-package pl.pakoc;
+package pl.pakoc.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import pl.pakoc.model.album.AlbumModel;
 
 public class UserModel {
 	
@@ -11,6 +13,16 @@ public class UserModel {
 	private String street;
 	private Integer age;
 	private List<AlbumModel> albums = new ArrayList<>();
+	
+	public UserModel() { }
+	
+	public UserModel(String firstName, String lastName, String street, Integer age, List<AlbumModel> albums) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.street = street;
+		this.age = age;
+		this.albums = albums;
+	}
 	
 	public int getId() {
 		return id;

@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +20,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import pl.pakoc.dto.UserDto;
+import pl.pakoc.model.User;
+import pl.pakoc.service.UserService;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	

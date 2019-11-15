@@ -1,9 +1,12 @@
-package pl.pakoc;
+package pl.pakoc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -16,6 +19,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+import pl.pakoc.dto.UserDto;
+import pl.pakoc.dto.UserModel;
+import pl.pakoc.model.User;
+import pl.pakoc.model.album.AlbumModel;
+import pl.pakoc.service.UserService;
+import pl.pakoc.service.album.AlbumServiceClient;
 
 @RestController
 @RequestMapping("/users")
@@ -33,6 +45,8 @@ public class UserController {
 	
 	private static final String URI = "http://ALBUMS-WS/users/%s/albums";
 	
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Value("${info.property}")
     private String property;
 
@@ -48,16 +62,24 @@ public class UserController {
 	}
 	
 	@GetMapping("/{userId}")
+	//@HystrixCommand(fallbackMethod = "getDefaultUser", )
 	public ResponseEntity<UserModel> getUser(@PathVariable("userId") Integer userId) {
 		
 		UserModel user = userService.getUserById(userId);
 		
 //		ResponseEntity<List<AlbumModel>> albumList = restTemplate.exchange(String.format(URI, userId), HttpMethod.GET, null, new ParameterizedTypeReference<List<AlbumModel>>(){});
 //		user.setAlbums(albumList.getBody());
-		
+		logger.info("Before calling albums method");
 		List<AlbumModel> albums = albumServiceClient.getAlbums(userId);
 		user.setAlbums(albums);
+		logger.info("After calling albums method");
 		
 		return new ResponseEntity<UserModel>(user, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<UserModel> getDefaultUser(Integer id) {
+		UserModel userModel = new UserModel("Jan", "Kowalski", "Wzorcowa", 24, new ArrayList<>());
+		return new ResponseEntity<>(userModel, HttpStatus.FOUND);
+	}
+	
 }

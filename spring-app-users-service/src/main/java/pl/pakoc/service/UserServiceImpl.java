@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.service;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -9,6 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import pl.pakoc.dto.UserDto;
+import pl.pakoc.dto.UserModel;
+import pl.pakoc.model.User;
+import pl.pakoc.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.model.album;
 
 public class AlbumModel {
 	

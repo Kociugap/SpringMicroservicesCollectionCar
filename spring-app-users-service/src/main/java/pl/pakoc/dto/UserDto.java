@@ -1,7 +1,9 @@
-package pl.pakoc;
+package pl.pakoc.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import pl.pakoc.model.album.AlbumModel;
 
 public class UserDto {
 	

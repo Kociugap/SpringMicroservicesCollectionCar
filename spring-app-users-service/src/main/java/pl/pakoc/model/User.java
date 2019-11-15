@@ -1,4 +1,4 @@
-package pl.pakoc;
+package pl.pakoc.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

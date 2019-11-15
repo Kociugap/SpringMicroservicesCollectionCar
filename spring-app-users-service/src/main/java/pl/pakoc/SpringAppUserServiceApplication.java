@@ -15,10 +15,10 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-public class SpringEurekaClient1Application {
+public class SpringAppUserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringEurekaClient1Application.class, args);
+		SpringApplication.run(SpringAppUserServiceApplication.class, args);
 	}
 	
 	@Bean
