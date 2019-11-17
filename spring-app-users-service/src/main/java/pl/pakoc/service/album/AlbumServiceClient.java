@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import pl.pakoc.model.album.AlbumModel;
 
-@FeignClient(name="albums-ws", fallback=AlbumFallback.class)
-@RibbonClient(name="albums-ws")
+@FeignClient(name="album-api", fallback=AlbumFallback.class)
 public interface AlbumServiceClient {
 
 	@GetMapping("/users/{id}/albums")
